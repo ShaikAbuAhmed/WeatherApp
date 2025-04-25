@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Weather Results - Weather Dashboard{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow">
+            <div class="card-body">
+                <h2 class="card-title text-center mb-4">
+                    Weather in {{ weather.location.name }}, {{ weather.location.country }}
+                </h2>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card mb-3">
+                            <div class="card-body text-center">
+                                <h3 class="card-title">
+                                    <i class="bi bi-thermometer-half"></i> Temperature
+                                </h3>
+                                <p class="display-4">{{ weather.current.temp_c }}°C</p>
+                                <p class="text-muted">Feels like: {{ weather.current.feelslike_c }}°C</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="card mb-3">
+                            <div class="card-body text-center">
+                                <h3 class="card-title">
+                                    <i class="bi bi-cloud"></i> Conditions
+                                </h3>
+                                <p class="display-6">{{ weather.current.condition.text }}</p>
+                                <p class="text-muted">Humidity: {{ weather.current.humidity }}%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card mb-3">
+                            <div class="card-body text-center">
+                                <h3 class="card-title">
+                                    <i class="bi bi-wind"></i> Wind
+                                </h3>
+                                <p class="display-6">{{ weather.current.wind_kph }} km/h</p>
+                                <p class="text-muted">Direction: {{ weather.current.wind_dir }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="card mb-3">
+                            <div class="card-body text-center">
+                                <h3 class="card-title">
+                                    <i class="bi bi-eye"></i> Visibility
+                                </h3>
+                                <p class="display-6">{{ weather.current.vis_km }} km</p>
+                                <p class="text-muted">Pressure: {{ weather.current.pressure_mb }} mb</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <a href="{{ url_for('main.index') }}" class="btn btn-primary">
+                        <i class="bi bi-arrow-left"></i> Back to Search
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
